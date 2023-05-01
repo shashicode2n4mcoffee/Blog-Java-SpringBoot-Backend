@@ -1,18 +1,32 @@
 package com.app.blog.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name="roles")
-public class Roles {
+public class Roles  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name="role_id")
+    private Long roleId;
     @Column(unique = true)
-    private String roleTitle;
+    private String authority;
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
 }
