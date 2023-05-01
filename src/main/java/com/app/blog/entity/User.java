@@ -25,7 +25,6 @@ public class User {
     @NaturalId(mutable = true)
     private String email;
     private String password;
-    private String role;
     private boolean isEnabled = false;
 
 }

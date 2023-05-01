@@ -5,6 +5,7 @@ import com.app.blog.exception.UserAlreadyExistsException;
 import com.app.blog.record.RegisterRequest;
 import com.app.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 
     @Autowired
     UserRepository userRepository;
+    PasswordEncoder passwordEncoder;
 
     @Override
     public User registerUser(RegisterRequest registerRequest) {
@@ -26,8 +28,7 @@ public class RegisterUserServiceImpl implements RegisterUserService {
         newUser.setEmail(registerRequest.email());
         newUser.setFirstName(registerRequest.firstName());
         newUser.setLastName(registerRequest.lastName());
-        newUser.setRole(registerRequest.role());
-        newUser.setPassword(registerRequest.password());
+        newUser.setPassword(passwordEncoder.encode(registerRequest.password()));
 
         User savedUser = userRepository.save(newUser);
         return savedUser;
