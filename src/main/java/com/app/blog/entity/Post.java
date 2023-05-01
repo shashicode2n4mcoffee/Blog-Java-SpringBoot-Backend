@@ -9,7 +9,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long postId;
     private String postMessage;
-    private Long likesCount;
+    private Long likesCount = 0L;
 
     public Long getPostId() {
         return postId;
