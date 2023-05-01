@@ -11,6 +11,9 @@ public class Reply {
     private String replyMessage;
     private Long likesCount;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Comment comment;
+
     public Long getReplyId() {
         return replyId;
     }
