@@ -34,4 +34,13 @@ public class Post {
     public void setLikesCount(Long likesCount) {
         this.likesCount = likesCount;
     }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", postMessage='" + postMessage + '\'' +
+                ", likesCount=" + likesCount +
+                '}';
+    }
 }

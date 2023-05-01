@@ -47,4 +47,14 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", commentMessage='" + commentMessage + '\'' +
+                ", likesCount=" + likesCount +
+                ", post=" + post +
+                '}';
+    }
 }

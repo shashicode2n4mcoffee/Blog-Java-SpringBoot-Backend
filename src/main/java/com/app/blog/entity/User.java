@@ -70,4 +70,16 @@ public class User {
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", isEnabled=" + isEnabled +
+                '}';
+    }
 }

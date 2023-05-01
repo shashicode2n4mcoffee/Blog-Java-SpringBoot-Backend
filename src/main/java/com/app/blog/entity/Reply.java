@@ -34,4 +34,13 @@ public class Reply {
     public void setLikesCount(Long likesCount) {
         this.likesCount = likesCount;
     }
+
+    @Override
+    public String toString() {
+        return "Reply{" +
+                "replyId=" + replyId +
+                ", replyMessage='" + replyMessage + '\'' +
+                ", likesCount=" + likesCount +
+                '}';
+    }
 }
