@@ -5,6 +5,7 @@ import com.app.blog.payload.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 //    Get all Users
@@ -16,7 +17,7 @@ public interface UserService {
     UserDto addUser(UserDto userDto);
 
 //    Update the User
-    UserDto updateUser(UserDto userDto);
+    UserDto updateUser(Long userId, Map<String,Object> updates);
 
 //    Delete User
     void deleteuser(Long userId);

@@ -7,8 +7,11 @@ import com.app.blog.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -51,8 +54,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDto updateUser(UserDto userDto) {
-        return null;
+    public UserDto updateUser(Long userId, Map<String, Object> updates) {
+        User fetchedUser = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not found"));
+        updates.forEach((key,value)->{
+            Field filed = ReflectionUtils.findField(User.class, key);
+            if(filed != null){
+                filed.setAccessible(true);
+                ReflectionUtils.setField(filed,fetchedUser,value);
+            }
+        });
+        User updatedUser = userRepository.save(fetchedUser);
+        UserDto userDto = new UserDto();
+        BeanUtils.copyProperties(updatedUser, userDto);
+        return userDto;
     }
 
     @Override
