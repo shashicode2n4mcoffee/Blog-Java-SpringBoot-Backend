@@ -2,6 +2,7 @@ package com.app.blog.service.userService;
 
 import com.app.blog.entity.User;
 import com.app.blog.exception.ResourceNotFoundException;
+import com.app.blog.exception.UserAlreadyExistsException;
 import com.app.blog.payload.UserDto;
 import com.app.blog.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
@@ -41,6 +42,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto addUser(UserDto userDto) {
+
+        Optional<User> fetchedUser = userRepository.findByEmail(userDto.getEmail());
+
+        if(fetchedUser.isPresent()){
+            throw new UserAlreadyExistsException("User already exists");
+        }
 
         User user = new User();
         BeanUtils.copyProperties(userDto, user);

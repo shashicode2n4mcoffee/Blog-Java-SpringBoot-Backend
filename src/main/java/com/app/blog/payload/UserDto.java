@@ -9,22 +9,21 @@ import org.hibernate.annotations.NaturalId;
 public class UserDto {
 
     private Long userId;
-    @NotNull
+    @NotEmpty
     @Size(min=3, max = 50)
     private String firstName;
-    @NotNull
     @NotEmpty
     @Size(min = 3, max = 50)
     private String lastName;
     @Email
     @Size(min = 3, max = 100)
     private String email;
-    @NotNull
+    @NotEmpty
     @Size(min = 4, max = 100)
     private String password;
     private boolean isEnabled = false;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 5, max = 100)
     private String about;
 
