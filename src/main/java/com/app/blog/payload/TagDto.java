@@ -1,14 +1,13 @@
-package com.app.blog.entity;
+package com.app.blog.payload;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name = "Tags")
-public class Tags {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class TagDto {
+
     private Long tagId;
-    @Column(unique = true)
+    @NotEmpty
+    @Size(min=3, max=100)
     private String tagTitle;
 
     public Long getTagId() {
@@ -29,7 +28,7 @@ public class Tags {
 
     @Override
     public String toString() {
-        return "Tags{" +
+        return "TagDto{" +
                 "tagId=" + tagId +
                 ", tagTitle='" + tagTitle + '\'' +
                 '}';
