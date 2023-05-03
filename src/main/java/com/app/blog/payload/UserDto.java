@@ -1,15 +1,31 @@
 package com.app.blog.payload;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.NaturalId;
 
 public class UserDto {
 
     private Long userId;
+    @NotNull
+    @Size(min=3, max = 50)
     private String firstName;
+    @NotNull
+    @NotEmpty
+    @Size(min = 3, max = 50)
     private String lastName;
+    @Email
+    @Size(min = 3, max = 100)
     private String email;
+    @NotNull
+    @Size(min = 4, max = 100)
     private String password;
     private boolean isEnabled = false;
+
+    @NotNull
+    @Size(min = 5, max = 100)
     private String about;
 
     public Long getUserId() {

@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService{
         User fetchedUser = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not found"));
         updates.forEach((key,value)->{
             Field filed = ReflectionUtils.findField(User.class, key);
-            if(filed != null){
+            if(filed != null && value != "" && value!= null){
                 filed.setAccessible(true);
                 ReflectionUtils.setField(filed,fetchedUser,value);
             }
