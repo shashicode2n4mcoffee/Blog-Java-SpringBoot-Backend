@@ -1,7 +1,6 @@
 package com.app.blog.controller;
 
 import com.app.blog.entity.Post;
-import com.app.blog.repository.PostRepository;
 import com.app.blog.service.postService.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,4 +22,6 @@ public class PostController {
     public Post addPost(@RequestBody Post post){
         return postService.addPost(post);
     }
+
+
 }

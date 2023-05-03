@@ -1,24 +1,12 @@
-package com.app.blog.entity;
-
-import jakarta.persistence.*;
+package com.app.blog.payload;
 
 import org.hibernate.annotations.NaturalId;
 
-import java.util.Set;
+public class UserDto {
 
-/**
- * @author Sampson Alfred
- */
-@Entity
-@Table(name="users")
-
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
     private String firstName;
     private String lastName;
-    @NaturalId(mutable = true)
     private String email;
     private String password;
     private boolean isEnabled = false;
@@ -78,17 +66,5 @@ public class User {
 
     public void setAbout(String about) {
         this.about = about;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", isEnabled=" + isEnabled +
-                '}';
     }
 }
