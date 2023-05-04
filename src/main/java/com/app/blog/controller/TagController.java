@@ -1,6 +1,6 @@
 package com.app.blog.controller;
 
-import com.app.blog.payload.TagDto;
+import com.app.blog.dto.TagDto;
 import com.app.blog.service.tagService.TagService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

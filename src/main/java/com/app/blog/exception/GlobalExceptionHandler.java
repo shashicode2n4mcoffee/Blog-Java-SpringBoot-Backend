@@ -1,6 +1,6 @@
 package com.app.blog.exception;
 
-import com.app.blog.payload.ErrorResponse;
+import com.app.blog.dto.ErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,12 +15,12 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> resourceNotFoundHandler(ResourceNotFoundException ex){
-        ErrorResponse errorResponse = new ErrorResponse();
+    public ResponseEntity<ErrorDto> resourceNotFoundHandler(ResourceNotFoundException ex){
+        ErrorDto errorResponse = new ErrorDto();
 
         errorResponse.setMessage(ex.getMessage());
         errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        return  new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
+        return  new ResponseEntity<ErrorDto>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -36,10 +36,10 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> userAlreadyExistsException(ResourceAlreadyExistsException ex){
-        ErrorResponse errorResponse = new ErrorResponse();
+    public ResponseEntity<ErrorDto> userAlreadyExistsException(ResourceAlreadyExistsException ex){
+        ErrorDto errorResponse = new ErrorDto();
         errorResponse.setMessage(ex.getMessage());
         errorResponse.setStatus(HttpStatus.ALREADY_REPORTED.value());
-        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.ALREADY_REPORTED);
+        return new ResponseEntity<ErrorDto>(errorResponse, HttpStatus.ALREADY_REPORTED);
     }
 }

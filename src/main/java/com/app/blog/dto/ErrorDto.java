@@ -1,17 +1,15 @@
-package com.app.blog.payload;
+package com.app.blog.dto;
 
-import org.springframework.http.HttpStatus;
-
-public class ErrorResponse {
+public class ErrorDto {
     private String message;
     private int status;
 
-    public ErrorResponse(String message, int httpStatus) {
+    public ErrorDto(String message, int httpStatus) {
         this.message = message;
         this.status = httpStatus;
     }
 
-    public ErrorResponse() {
+    public ErrorDto() {
 
     }
 

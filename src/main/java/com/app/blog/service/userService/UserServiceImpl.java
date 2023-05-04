@@ -3,7 +3,7 @@ package com.app.blog.service.userService;
 import com.app.blog.entity.User;
 import com.app.blog.exception.ResourceNotFoundException;
 import com.app.blog.exception.ResourceAlreadyExistsException;
-import com.app.blog.payload.UserDto;
+import com.app.blog.dto.UserDto;
 import com.app.blog.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

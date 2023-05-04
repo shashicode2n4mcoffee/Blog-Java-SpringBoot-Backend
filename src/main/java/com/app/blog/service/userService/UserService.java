@@ -1,8 +1,6 @@
 package com.app.blog.service.userService;
 
-import com.app.blog.entity.User;
-import com.app.blog.payload.UserDto;
-import org.springframework.stereotype.Service;
+import com.app.blog.dto.UserDto;
 
 import java.util.List;
 import java.util.Map;

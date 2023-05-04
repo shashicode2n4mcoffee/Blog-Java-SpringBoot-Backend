@@ -1,6 +1,6 @@
 package com.app.blog.service.tagService;
 
-import com.app.blog.payload.TagDto;
+import com.app.blog.dto.TagDto;
 
 import java.util.List;
 import java.util.Map;

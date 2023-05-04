@@ -3,7 +3,7 @@ package com.app.blog.service.tagService;
 import com.app.blog.entity.Tags;
 import com.app.blog.exception.ResourceAlreadyExistsException;
 import com.app.blog.exception.ResourceNotFoundException;
-import com.app.blog.payload.TagDto;
+import com.app.blog.dto.TagDto;
 import com.app.blog.repository.TagRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
