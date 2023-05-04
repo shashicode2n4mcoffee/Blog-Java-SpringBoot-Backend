@@ -9,19 +9,21 @@ import java.util.Map;
 
 public interface PostService {
 
-    List<Post> getAllPostsByUserIdAndTagId(Long userId, Long tagId);
+    List<Post> getAllPostsByUserAndTag(Long userId, Long tagId);
 
     Post addPost(Long userId, Long tagId, PostDto postDto);
 
-    Post updatePost(Long userId, Long tagId, Map<String, Object>updates);
+    Post updatePost(Long postId, Map<String, Object>updates);
 
     Post getPostById(Long postId);
 
     String deletePostById(Long postId);
 
-    List<Post> getAllPostsByUserId(Long userId);
+    List<Post> getAllPostsByUser(Long userId);
 
-    List<Post> getAllPostsByTagid(Long tagId);
+
+    List<Post> getAllPostsByTag(Long tagId);
+
 
     List<Post> searchPosts(String searchValue);
 
