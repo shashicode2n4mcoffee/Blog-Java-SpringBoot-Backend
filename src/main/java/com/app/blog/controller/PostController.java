@@ -56,4 +56,9 @@ public class PostController {
         return ResponseEntity.ok(postService.updatePost(postId, updates));
     }
 
+    @GetMapping("/search")
+    ResponseEntity<List<Post>> getPostBySearchTitle(){
+        return ResponseEntity.ok(null);
+    }
+
 }
