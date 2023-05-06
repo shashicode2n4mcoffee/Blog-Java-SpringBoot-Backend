@@ -1,5 +1,6 @@
 package com.app.blog.controller;
 
+import com.app.blog.config.AppConstants;
 import com.app.blog.dto.PostDto;
 import com.app.blog.dto.PostResponse;
 import com.app.blog.entity.Post;
@@ -65,10 +66,10 @@ public class PostController {
 
 
     @GetMapping()
-    ResponseEntity<PostResponse> getAllPost(@RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
-                                            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
-                                            @RequestParam(value = "sortBy", defaultValue = "createdAt", required = false) String sortBy,
-                                            @RequestParam(value = "orderBy", defaultValue = "desc", required = false) String orderBy){
+    ResponseEntity<PostResponse> getAllPost(@RequestParam(value = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false) int pageNumber,
+                                            @RequestParam(value = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false) int pageSize,
+                                            @RequestParam(value = "sortBy", defaultValue = AppConstants.SORTBY, required = false) String sortBy,
+                                            @RequestParam(value = "orderBy", defaultValue = AppConstants.ORDERBY, required = false) String orderBy){
         return ResponseEntity.ok(postService.getPostByPagination(pageSize, pageNumber, sortBy, orderBy));
     }
 }
