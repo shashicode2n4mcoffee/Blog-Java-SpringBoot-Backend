@@ -1,6 +1,7 @@
 package com.app.blog.service.postService;
 
 import com.app.blog.dto.PostDto;
+import com.app.blog.dto.PostResponse;
 import com.app.blog.entity.Post;
 import org.springframework.http.ResponseEntity;
 
@@ -26,5 +27,9 @@ public interface PostService {
 
 
     List<Post> searchPosts(String searchValue);
+
+    PostResponse getPostByPagination(int pageSize, int pageNumber, String sortBy, String orderBy);
+
+    List<Post> getAllPostsBySearch(String keyword);
 
 }

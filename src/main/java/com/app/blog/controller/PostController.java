@@ -1,6 +1,7 @@
 package com.app.blog.controller;
 
 import com.app.blog.dto.PostDto;
+import com.app.blog.dto.PostResponse;
 import com.app.blog.entity.Post;
 import com.app.blog.service.postService.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +57,18 @@ public class PostController {
         return ResponseEntity.ok(postService.updatePost(postId, updates));
     }
 
-    @GetMapping("/search")
-    ResponseEntity<List<Post>> getPostBySearchTitle(){
-        return ResponseEntity.ok(null);
+    @GetMapping("/search/{search}")
+    ResponseEntity<List<Post>> getPostBySearchTitle(@PathVariable("search") String search){
+        System.out.println("SEARCH KEYWORD : " +  search);
+        return ResponseEntity.ok(postService.getAllPostsBySearch(search));
     }
 
+
+    @GetMapping()
+    ResponseEntity<PostResponse> getAllPost(@RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
+                                            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
+                                            @RequestParam(value = "sortBy", defaultValue = "createdAt", required = false) String sortBy,
+                                            @RequestParam(value = "orderBy", defaultValue = "desc", required = false) String orderBy){
+        return ResponseEntity.ok(postService.getPostByPagination(pageSize, pageNumber, sortBy, orderBy));
+    }
 }

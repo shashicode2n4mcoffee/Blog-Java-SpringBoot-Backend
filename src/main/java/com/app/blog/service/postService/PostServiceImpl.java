@@ -1,6 +1,7 @@
 package com.app.blog.service.postService;
 
 import com.app.blog.dto.PostDto;
+import com.app.blog.dto.PostResponse;
 import com.app.blog.dto.TagDto;
 import com.app.blog.entity.Post;
 import com.app.blog.entity.Tags;
@@ -11,6 +12,10 @@ import com.app.blog.repository.TagRepository;
 import com.app.blog.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
@@ -99,4 +104,36 @@ public class PostServiceImpl implements PostService{
     public List<Post> searchPosts(String searchValue) {
         return null;
     }
+
+    @Override
+    public List<Post> getAllPostsBySearch(String keyword) {
+        System.out.println("SEARCH KEYWORD : " + keyword);
+        return postRepository.findByPostTitleContaining(keyword)
+                .orElseThrow(()->new ResourceNotFoundException("Post not found for the searched keywords"));
+    }
+
+    @Override
+    public PostResponse getPostByPagination(int pageSize, int pageNumber, String sortBy, String orderBy) {
+
+        Sort sort = null;
+        if(orderBy.equalsIgnoreCase("asc")){
+            sort = Sort.by(sortBy).ascending();
+        }else {
+            sort = Sort.by(sortBy).descending();
+        }
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        Page<Post> postList = postRepository.findAll(pageable);
+
+        PostResponse postResponse = new PostResponse();
+
+        postResponse.setPosts(postList.getContent());
+        postResponse.setTotalPosts(postList.getTotalElements());
+        postResponse.setCurrentPage(postList.getNumber());
+        postResponse.setTotalPages(postList.getTotalPages());
+
+        return postResponse;
+    }
+
+
 }
