@@ -21,6 +21,8 @@ public class UserDto {
     private String password;
     private boolean isEnabled = false;
 
+    private String username;
+
     @NotEmpty
     @Size(min = 5, max = 100)
     private String about;
@@ -31,6 +33,15 @@ public class UserDto {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
